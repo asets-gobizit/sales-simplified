@@ -586,8 +586,14 @@
   <section style="background:var(--white);padding:60px 0;">
     <div class="container" style="text-align:center;">
       <h2 style="font-size:52px;margin-bottom:24px;"><span style="color:var(--navy);">Jonathan's </span><span style="color:var(--orange);font-style:italic;">Vision</span></h2>
-      <div style="width:100%;max-width:750px;margin:0 auto;aspect-ratio:16/9;background:#000;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center;">
-        <video controls playsinline style="height:100%;max-width:100%;">
+      <div id="vision-player" style="width:100%;max-width:960px;margin:0 auto;aspect-ratio:16/9;border-radius:8px;overflow:hidden;position:relative;cursor:pointer;background:#000;" onclick="playVisionVideo()">
+        <img id="vision-cover" src="images/vision-cover.png" alt="Play video" style="width:100%;height:100%;object-fit:cover;">
+        <div id="vision-play-btn" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+          <div style="width:68px;height:68px;background:rgba(255,255,255,0.85);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+            <div style="width:0;height:0;border-top:14px solid transparent;border-bottom:14px solid transparent;border-left:24px solid #333;margin-left:4px;"></div>
+          </div>
+        </div>
+        <video id="vision-video" playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:none;">
           <source src="images/jonathans-vision.mp4" type="video/mp4">
         </video>
       </div>
@@ -782,6 +788,16 @@
   </div>
 
   <script>
+    function playVisionVideo() {
+      document.getElementById('vision-cover').style.display = 'none';
+      document.getElementById('vision-play-btn').style.display = 'none';
+      var vid = document.getElementById('vision-video');
+      vid.style.display = 'block';
+      vid.controls = true;
+      vid.play();
+      document.getElementById('vision-player').style.cursor = 'default';
+      document.getElementById('vision-player').onclick = null;
+    }
     function openModal() {
       document.getElementById('consultModal').classList.add('active');
       document.body.style.overflow = 'hidden';
