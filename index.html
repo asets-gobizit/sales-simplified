@@ -195,6 +195,49 @@
       box-shadow: 0 12px 40px rgba(29, 66, 118, 0.14);
     }
     .hero-photo img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 16 / 11; }
+    .hero-video { background: var(--bg); max-width: 290px; margin-inline: auto; width: 100%; }
+    .video-box { position: relative; background: #000; }
+    .hero-video video { width: 100%; display: block; aspect-ratio: 9 / 16; object-fit: cover; background: #000; }
+    .sound-btn {
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      background: rgba(0,0,0,0.55);
+      color: var(--ink);
+      border: none;
+      border-radius: 100px;
+      font-family: var(--display);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      padding: 11px;
+      cursor: pointer;
+      min-height: 40px;
+      min-width: 40px;
+      justify-content: center;
+      transition: padding 0.15s ease, background 0.15s ease;
+      z-index: 3;
+    }
+    .sound-btn svg { width: 18px; height: 18px; fill: #fff; flex: none; }
+    /* icon-only at rest; white pill with label when hovering the video */
+    .sound-btn span { display: none; }
+    .video-box:hover .sound-btn span, .sound-btn:focus-visible span { display: inline; }
+    .video-box:hover .sound-btn, .sound-btn:focus-visible {
+      gap: 8px;
+      padding: 11px 18px;
+      background: rgba(255,255,255,0.95);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+    }
+    .video-box:hover .sound-btn svg, .sound-btn:focus-visible svg { fill: var(--blue); }
+    .video-caption {
+      font-size: 0.8125rem;
+      color: var(--muted);
+      padding: 10px 14px;
+      background: var(--bg);
+      border-top: 1px solid var(--line);
+    }
     @media (min-width: 900px) {
       .hero-grid { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(48px, 5vw, 72px); }
     }
@@ -371,6 +414,8 @@
     footer a:hover { color: #fff; }
     .foot-links { display: flex; gap: 22px; align-items: center; }
     .disclaimer { width: 100%; font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-top: 6px; }
+    .built-by { width: 100%; font-size: 0.8125rem; color: rgba(255,255,255,0.6); }
+    .built-by a { font-weight: 600; }
 
     /* reveal */
     .reveal { opacity: 0; transform: translateY(12px); transition: opacity 0.5s ease, transform 0.5s ease; }
@@ -416,8 +461,20 @@
             <a class="btn btn-ghost" href="#about">Meet Jonathan</a>
           </div>
         </div>
-        <figure class="hero-photo">
-          <img src="assets/yoni-help1.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='file:///Z:/01 Shared Customers/@@@Yoni Yuval/Yoni Help1.jpg'}" alt="Jonathan Yuval coaching a founder at her screen" loading="eager">
+        <figure class="hero-photo hero-video">
+          <div class="video-box">
+          <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="assets/course-poster.jpg">
+            <source src="assets/sales-simplified-course.mp4" type="video/mp4">
+            <source src="file:///Z:/01 Shared Customers/@@@Yoni Yuval/Sales Simplified Practical Course for Entrepreneurs and Founders.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <button id="soundBtn" class="sound-btn" type="button" aria-pressed="false" aria-label="Turn sound on">
+            <svg class="ico-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"/></svg>
+            <svg class="ico-on" viewBox="0 0 24 24" aria-hidden="true" style="display:none"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>
+            <span id="soundLabel">Turn sound on</span>
+          </button>
+          </div>
+          <figcaption class="video-caption">Sales Simplified — a practical course for entrepreneurs and founders</figcaption>
         </figure>
       </div>
     </section>
@@ -562,6 +619,7 @@
         <a href="#top">Back to top</a>
       </span>
       <span class="disclaimer">DISCLAIMER: Results may vary. Results are based on individual circumstances.</span>
+      <span class="built-by">Designed and AI-powered by <a href="https://www.gobizit.ai/" target="_blank" rel="noopener">GoBizit.ai</a></span>
     </div>
   </footer>
 
@@ -585,6 +643,20 @@
     // Marquee: duplicate content for seamless loop
     var track = document.getElementById('marqueeTrack');
     track.innerHTML += track.innerHTML;
+
+    // Hero video: loops muted; button toggles sound
+    var heroVideo = document.getElementById('heroVideo');
+    var soundBtn = document.getElementById('soundBtn');
+    soundBtn.addEventListener('click', function () {
+      heroVideo.muted = !heroVideo.muted;
+      var on = !heroVideo.muted;
+      soundBtn.setAttribute('aria-pressed', on);
+      soundBtn.setAttribute('aria-label', on ? 'Turn sound off' : 'Turn sound on');
+      document.getElementById('soundLabel').textContent = on ? 'Turn sound off' : 'Turn sound on';
+      soundBtn.querySelector('.ico-off').style.display = on ? 'none' : 'block';
+      soundBtn.querySelector('.ico-on').style.display = on ? 'block' : 'none';
+      if (heroVideo.paused) heroVideo.play();
+    });
 
     // Contact form (local build — no backend yet)
     var form = document.getElementById('contactForm');
