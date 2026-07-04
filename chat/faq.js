@@ -59,4 +59,4 @@ window.YM_FAQ = [
 ];
 
 window.YM_FALLBACK = "Good question — I don't want to guess. Leave your email and Jonathan will answer you personally within 24 hours.";
-window.YM_LEAD_EMAIL_ENDPOINT = "https://formsubmit.co/ajax/danny@gobzizit.com"; /* activate: first submission sends a confirm email */
+window.YM_LEAD_EMAIL_ENDPOINT = "https://formsubmit.co/ajax/danny@gobizit.com"; /* activate: first submission sends a confirm email */
