@@ -3,827 +3,613 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sales Simplified | Jonathan Yuval</title>
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <title>Sales Simplified by Jonathan Yuval — Unlock your sales and business potential the right way</title>
+  <meta name="description" content="An online program with expert support for entrepreneurs and young company owners: define your market, build a sales strategy, grow into new markets.">
+  <link rel="icon" type="image/png" href="https://lead-it.biz/wp-content/uploads/2026/02/cropped-Lead-It-Trasfpartnet.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    /* ── Tokens — light theme, SBI reference ────────────── */
+    :root {
+      --blue:      #2B5FA3;   /* primary                          */
+      --blue-deep: #1D4276;   /* hover / dark panel               */
+      --orange:    #F26649;   /* sparse accent                    */
+      --ink:       #232A31;   /* headings / body text             */
+      --muted:     #5B6873;
+      --bg:        #FFFFFF;
+      --gray:      #F4F6F9;   /* alternate section                */
+      --line:      #E3E8EF;
+      --logo-gray: #8A94A0;   /* marquee wordmarks                */
+
+      --display: "Poppins", "Segoe UI", Arial, sans-serif;
+      --body: "Open Sans", "Segoe UI", Arial, sans-serif;
+
+      --radius: 8px;
+      --radius-lg: 14px;
+      --measure: 36em;
+      --gutter: clamp(20px, 5vw, 48px);
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
-      --navy: #012245;
-      --navy-dark: #001330;
-      --navy-secondary: #002d5c;
-      --black: #000000;
-      --white: #ffffff;
-      --off-white: #fafafa;
-      --orange: #FDA028;
-      --orange-hover: #e8901a;
-      --text-light: #c8d6e5;
-      --text-gray: #5f6360;
-      --light-gray: #959595;
-      --heading-font: Arial, Helvetica, sans-serif;
-      --display-font: Arial, Helvetica, sans-serif;
-      --body-font: Arial, Helvetica, sans-serif;
-    }
-
     html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
 
     body {
-      font-family: var(--body-font);
-      color: var(--white);
-      line-height: 1.6;
+      font-family: var(--body);
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--ink);
+      background: var(--bg);
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
     }
 
-    h1, h2, h3, h4 { font-family: var(--heading-font); font-weight: 700; }
+    ::selection { background: var(--blue); color: #fff; }
 
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    a { color: inherit; }
+    img { max-width: 100%; height: auto; display: block; }
 
-    /* ─── CTA BUTTON ─── */
-    .cta-btn {
-      display: inline-block;
-      background: var(--orange);
-      color: var(--black);
-      font-family: var(--heading-font);
-      font-size: 16px;
-      font-weight: 700;
-      padding: 16px 36px;
-      border: none;
-      border-radius: 0;
-      cursor: pointer;
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      transition: background 0.2s, transform 0.15s;
-    }
-    .cta-btn:hover {
-      background: var(--orange-hover);
-      transform: translateY(-2px);
-    }
-
-    /* ─── HEADER ─── */
-    .site-header {
-      background: transparent;
-      padding: 15px 0;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-    }
-    .site-header .container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .logo-text {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--orange);
-      text-decoration: none;
-      letter-spacing: -0.5px;
-      font-family: var(--heading-font);
-    }
-    .logo-text .first-name { color: var(--white); }
-
-    /* ─── HERO ─── */
-    .hero {
-      position: relative;
-      min-height: 80vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      overflow: hidden;
-      padding-top: 70px;
-    }
-    .hero-video {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      z-index: 0;
-    }
-    .hero-overlay {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(1, 34, 69, 0.75);
-      z-index: 1;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 800px;
-      padding: 0 24px;
-    }
-    .hero-name {
-      font-family: var(--heading-font);
-      font-size: 22px;
-      font-weight: 400;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-      color: var(--text-light);
-    }
-    .hero h1 {
-      font-size: 64px;
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 24px;
-      text-transform: uppercase;
-    }
-    .hero-desc {
-      font-family: var(--display-font);
-      font-size: 18px;
-      font-weight: 400;
-      line-height: 1.7;
-      margin-bottom: 40px;
-      color: var(--text-light);
-      max-width: 640px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* ─── VISION / JOIN THE WINNING SIDE ─── */
-    .vision {
-      position: relative;
-      background: var(--navy-dark);
-      color: var(--white);
-      padding: 80px 0;
-      overflow: hidden;
-    }
-    .vision-bg {
-      position: absolute;
-      inset: 0;
-      background: url('images/business-meeting.jpg') center/cover no-repeat;
-      opacity: 0.15;
-    }
-    .vision .container { position: relative; z-index: 2; }
-    .vision-header {
-      font-family: var(--display-font);
-      font-size: 22px;
-      font-weight: 400;
-      text-align: center;
-      color: var(--orange);
-      margin-bottom: 8px;
-    }
-    .vision h2 {
-      font-family: var(--display-font);
-      font-size: 56px;
-      font-style: italic;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 48px;
-      color: var(--orange);
-    }
-    .vision-list {
-      list-style: none;
-      max-width: 900px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px 60px;
-    }
-    .vision-list li {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 12px 0;
-      font-size: 21px;
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--white);
-      border-bottom: none;
-    }
-    .vision-list .check {
-      color: var(--orange);
-      font-size: 22px;
-      flex-shrink: 0;
-      background: var(--orange);
-      color: var(--white);
-      width: 28px;
-      height: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    :focus-visible {
+      outline: 3px solid var(--blue);
+      outline-offset: 3px;
       border-radius: 4px;
-      font-size: 16px;
-    }
-    .vision-list li.more-item {
-      font-style: italic;
-      color: var(--white);
-      border-bottom: none;
-    }
-    .vision-cta {
-      text-align: center;
-      margin-top: 48px;
-    }
-    .vision-cta .cta-btn {
-      font-size: 18px;
-      padding: 16px 40px;
-    }
-    @media (max-width: 600px) {
-      .vision-list { grid-template-columns: 1fr; gap: 4px; }
-      .vision h2 { font-size: 36px; }
     }
 
-    /* ─── HOW IT WORKS ─── */
-    .how-it-works {
-      background: var(--navy);
-      padding: 80px 0;
-      text-align: center;
-    }
-    .how-it-works h2 {
-      font-size: 48px;
-      margin-bottom: 48px;
-    }
-    .three-cols {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 40px;
-    }
-    .col-card {
-      padding: 32px 24px;
-    }
-    .col-icon {
-      margin-bottom: 20px;
-    }
-    .col-icon svg {
-      width: 56px;
-      height: 56px;
-      fill: var(--orange);
-    }
-    .col-card h3 {
-      font-size: 22px;
-      margin-bottom: 14px;
-      color: var(--orange);
-    }
-    .col-card p {
-      font-size: 15px;
-      line-height: 1.7;
-      color: var(--text-light);
+    .wrap { max-width: 1120px; margin: 0 auto; padding-inline: var(--gutter); }
+
+    /* ── Type ───────────────────────────────────────────── */
+    h1, h2, h3 { font-family: var(--display); font-weight: 700; color: var(--ink); }
+    h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); line-height: 1.12; letter-spacing: -0.02em; }
+    h2 { font-size: clamp(1.6rem, 3.2vw, 2.2rem); line-height: 1.2; letter-spacing: -0.015em; }
+    h3 { font-size: 1.15rem; line-height: 1.35; font-weight: 600; }
+
+    .eyebrow {
+      font-family: var(--display);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 1rem;
     }
 
-    /* ─── WHO IS IT FOR / WHY DOES IT EXIST ─── */
-    .who-section {
-      background: var(--black);
-      padding: 0;
+    .lede { font-size: clamp(1.05rem, 1.6vw, 1.2rem); line-height: 1.65; }
+    .muted { color: var(--muted); }
+    p { max-width: var(--measure); }
+
+    /* ── Buttons ────────────────────────────────────────── */
+    .btn {
+      display: inline-block;
+      font-family: var(--display);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 14px 28px;
+      border: 1.5px solid transparent;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+      min-height: 44px;
+      text-align: center;
     }
-    .who-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      max-width: 900px;
-      margin: 0 auto;
+    .btn-solid { background: var(--blue); color: #fff; }
+    .btn-solid:hover { background: var(--blue-deep); }
+    .btn-ghost { border-color: var(--blue); color: var(--blue); background: transparent; }
+    .btn-ghost:hover { background: var(--blue); color: #fff; }
+
+    .link-in {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: var(--blue);
+      text-decoration: none;
+      border-bottom: 1.5px solid var(--blue);
+      padding-bottom: 1px;
     }
-    .who-cell {
-      aspect-ratio: 1/1;
+    .link-in:hover { color: var(--blue-deep); }
+    .link-in svg { width: 18px; height: 18px; fill: currentColor; }
+
+    /* ── Header ─────────────────────────────────────────── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; min-height: 70px; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand img { width: 42px; height: 42px; object-fit: contain; }
+    .brand-text { font-family: var(--display); font-size: 1.1rem; font-weight: 700; line-height: 1.15; color: var(--ink); }
+    .brand-text small {
+      display: block;
+      font-family: var(--body);
+      font-size: 0.66rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+    .nav-links { display: none; }
+    .nav-cta { display: none; }
+
+    .menu-btn {
+      background: none;
+      border: 1.5px solid var(--line);
+      border-radius: var(--radius);
+      font-family: var(--display);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 10px 16px;
+      cursor: pointer;
+      color: var(--ink);
+      min-height: 44px;
+    }
+    .mobile-menu { display: none; border-top: 1px solid var(--line); background: var(--bg); padding: 8px 0 20px; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: block;
+      padding: 13px var(--gutter);
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px solid var(--line);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu .btn { margin: 14px var(--gutter) 0; }
+
+    @media (min-width: 900px) {
+      .menu-btn, .mobile-menu { display: none !important; }
+      .nav-links { display: flex; gap: clamp(16px, 2.5vw, 30px); align-items: center; }
+      .nav-links a {
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--muted);
+        padding: 6px 2px;
+      }
+      .nav-links a:hover { color: var(--blue); }
+      .nav-cta { display: inline-block; padding: 11px 22px; font-size: 0.875rem; }
+      .nav-links a.nav-cta { color: #fff; }
+      .nav-links a.nav-cta:hover { color: #fff; background: var(--blue-deep); }
+    }
+
+    /* ── Hero ───────────────────────────────────────────── */
+    .hero { padding: clamp(48px, 7vw, 96px) 0; }
+    .hero-grid { display: grid; gap: 40px; align-items: center; }
+    .hero h1 { margin-bottom: 1.2rem; max-width: 13em; }
+    .hero h1 em { font-style: normal; color: var(--blue); }
+    .hero .lede { margin-bottom: 2rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+    .hero-photo {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin: 0;
+      box-shadow: 0 12px 40px rgba(29, 66, 118, 0.14);
+    }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 16 / 11; }
+    @media (min-width: 900px) {
+      .hero-grid { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(48px, 5vw, 72px); }
+    }
+
+    /* ── Marquee (client/sector banner) ─────────────────── */
+    .strip {
+      border-block: 1px solid var(--line);
+      background: var(--bg);
+      padding: 22px 0;
       overflow: hidden;
     }
-    .who-cell img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: grayscale(100%);
-      display: block;
+    .strip-label {
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
     }
-    .who-cell-text {
+    .marquee { overflow: hidden; position: relative; }
+    .marquee::before, .marquee::after {
+      content: "";
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 60px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .marquee::before { left: 0; background: linear-gradient(90deg, var(--bg), transparent); }
+    .marquee::after { right: 0; background: linear-gradient(270deg, var(--bg), transparent); }
+    .marquee-track {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
-      text-align: center;
-      padding: 40px;
+      gap: clamp(36px, 5vw, 64px);
+      width: max-content;
+      animation: marquee 32s linear infinite;
     }
-    .who-cell-text h2 {
-      font-size: 32px;
-      font-style: italic;
-      margin-bottom: 20px;
-    }
-    .who-cell-text p {
-      font-size: 15px;
-      line-height: 1.7;
-      color: var(--text-light);
-      max-width: 320px;
-    }
-    .who-cta {
-      text-align: center;
-      padding: 48px 0;
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; flex-wrap: wrap; width: auto; justify-content: center; } }
+    .mark {
+      font-family: var(--display);
+      font-size: 1.02rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--logo-gray);
+      white-space: nowrap;
+      text-transform: uppercase;
     }
 
-    /* ─── TESTIMONIAL 1 (off-white) ─── */
-    .testimonial-section {
-      padding: 80px 0;
-      text-align: center;
+    /* ── Sections ───────────────────────────────────────── */
+    section { padding: clamp(56px, 8vw, 96px) 0; }
+    .alt { background: var(--gray); border-block: 1px solid var(--line); }
+
+    .split { display: grid; gap: 40px; }
+    @media (min-width: 900px) {
+      .split { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: clamp(48px, 5vw, 80px); align-items: start; }
     }
-    .testimonial-section.bg-offwhite {
-      background: var(--off-white);
-      color: var(--black);
+
+    /* about / who is jonathan */
+    .portrait {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin: 0;
+      max-width: 360px;
+      box-shadow: 0 12px 40px rgba(29, 66, 118, 0.14);
     }
-    .testimonial-section.bg-orange {
-      background: var(--orange);
-      color: var(--black);
+    .portrait img { width: 100%; aspect-ratio: 1 / 1.05; object-fit: cover; }
+    .facts { list-style: none; margin: 1.6rem 0; }
+    .facts li {
+      padding: 11px 0;
+      border-top: 1px solid var(--line);
+      font-size: 0.9375rem;
+      display: flex;
+      gap: 12px;
+      align-items: baseline;
     }
-    .testimonial-section h2 {
-      font-size: 48px;
-      color: var(--navy);
-      margin-bottom: 48px;
+    .facts li:last-child { border-bottom: 1px solid var(--line); }
+    .facts li::before { content: "—"; color: var(--orange); flex: none; font-weight: 700; }
+    .facts strong { font-weight: 700; }
+
+    /* program */
+    .cols3 { display: grid; gap: 20px; margin-top: 2.2rem; }
+    @media (min-width: 760px) { .cols3 { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
+    .card {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 26px;
     }
-    .testimonial-section.bg-orange h2 {
-      color: var(--black);
+    .card h3 { color: var(--blue); margin-bottom: 0.5rem; }
+    .card p { font-size: 0.9375rem; color: var(--muted); }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 2rem; max-width: 46em; }
+    .chip {
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      border: 1px solid var(--line);
+      border-radius: 100px;
+      background: var(--bg);
+      color: var(--muted);
     }
-    .testimonial-content {
-      max-width: 850px;
-      margin: 0 auto;
-      text-align: left;
+
+    /* stories */
+    .stories { display: grid; gap: 24px; margin-top: 2.2rem; }
+    @media (min-width: 900px) { .stories { grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; } }
+    .story {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: clamp(24px, 3vw, 34px);
     }
-    .testimonial-content .quote {
-      font-family: var(--display-font);
-      font-size: 15px;
-      line-height: 1.9;
-      color: #444;
-      margin-bottom: 28px;
-      font-style: italic;
+    .story blockquote {
+      font-family: var(--display);
+      font-size: 1.08rem;
+      line-height: 1.55;
+      font-weight: 500;
+      margin-bottom: 1.2rem;
+      color: var(--ink);
     }
-    .testimonial-section.bg-orange .quote {
-      color: #1a1a1a;
-    }
-    .testimonial-content .author {
-      font-family: var(--heading-font);
-      font-weight: 700;
-      font-size: 15px;
-      color: var(--navy);
+    .story blockquote::before { content: "“"; color: var(--orange); }
+    .story blockquote::after { content: "”"; color: var(--orange); }
+    .story .attrib { font-weight: 700; font-size: 0.9375rem; font-family: var(--display); }
+    .story .attrib small {
+      display: block;
+      font-family: var(--body);
+      font-weight: 400;
+      color: var(--muted);
+      font-size: 0.8125rem;
+      margin-top: 2px;
       line-height: 1.5;
     }
-    .testimonial-section.bg-orange .author {
-      color: var(--black);
-    }
 
-    /* ─── DON'T WASTE TIME ─── */
-    .dont-waste {
-      background: var(--navy);
-      padding: 80px 0;
-      text-align: center;
-    }
-    .dont-waste h2 {
-      font-size: 48px;
-      margin-bottom: 36px;
-    }
-
-    /* ─── BIO / EXPERTISE ─── */
-    .bio-section {
-      background: var(--white);
-      color: var(--black);
-      padding: 80px 0;
-    }
-    .bio-section h2 {
-      font-size: 48px;
-      color: var(--navy);
-      text-align: center;
-      margin-bottom: 48px;
-    }
-    .bio-content {
-      display: flex;
-      gap: 40px;
-      align-items: flex-start;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .bio-avatar {
-      flex-shrink: 0;
-    }
-    .bio-avatar img {
-      width: 92px;
-      height: 92px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-    .bio-text h3 {
-      font-size: 24px;
-      color: var(--navy);
-      margin-bottom: 8px;
-    }
-    .bio-text p {
-      font-size: 15px;
-      line-height: 1.8;
-      color: #444;
-      margin-bottom: 16px;
-    }
-    .bio-text a.more-stories {
-      display: inline-block;
-      color: var(--orange);
-      font-weight: 600;
-      text-decoration: none;
-      margin-top: 8px;
-      font-size: 15px;
-    }
-    .bio-text a.more-stories:hover {
-      text-decoration: underline;
-    }
-
-    /* ─── CONTACT / FINAL CTA ─── */
-    .contact-section {
-      background: var(--navy);
-      padding: 80px 0;
-      text-align: center;
-    }
-    .contact-section h2 {
-      font-size: 48px;
-      margin-bottom: 16px;
-    }
-    .contact-section p {
-      font-family: var(--display-font);
-      font-size: 18px;
-      color: var(--text-light);
-      max-width: 600px;
-      margin: 0 auto 36px;
-      line-height: 1.7;
-    }
-
-    /* ─── FOOTER ─── */
-    .site-footer {
-      background: var(--black);
-      padding: 32px 0;
-      text-align: center;
-      font-size: 13px;
-      color: #666;
-    }
-    .site-footer p { margin-bottom: 6px; }
-    .site-footer a {
-      color: #888;
-      text-decoration: none;
-      margin: 0 8px;
-    }
-    .site-footer a:hover { color: var(--orange); }
-
-    /* ─── MODAL ─── */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.7);
-      z-index: 9999;
-      align-items: center;
-      justify-content: center;
-    }
-    .modal-overlay.active { display: flex; }
-    .modal {
-      background: var(--white);
-      color: var(--black);
-      padding: 48px 40px;
-      border-radius: 4px;
-      max-width: 500px;
-      width: 90%;
-      position: relative;
-    }
-    .modal h3 {
-      font-size: 28px;
-      color: var(--navy);
-      margin-bottom: 8px;
-    }
-    .modal .modal-sub {
-      font-size: 14px;
-      color: #777;
-      margin-bottom: 28px;
-    }
-    .modal-close {
-      position: absolute;
-      top: 16px; right: 20px;
-      background: none;
-      border: none;
-      font-size: 28px;
-      cursor: pointer;
-      color: #999;
-      line-height: 1;
-    }
-    .modal-close:hover { color: var(--black); }
-    .form-group {
-      margin-bottom: 18px;
-    }
-    .form-group label {
-      display: block;
-      font-size: 13px;
-      font-weight: 600;
-      color: #555;
-      margin-bottom: 6px;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
+    /* contact */
+    .contact-grid { display: grid; gap: 40px; }
+    @media (min-width: 900px) { .contact-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(48px, 5vw, 80px); } }
+    form { display: grid; gap: 16px; }
+    .field { display: grid; gap: 6px; }
+    label { font-size: 0.875rem; font-weight: 600; font-family: var(--display); }
+    input, textarea {
+      font-family: var(--body);
+      font-size: 1rem;
       padding: 12px 14px;
-      border: 1px solid #ddd;
-      border-radius: 2px;
-      font-family: var(--body-font);
-      font-size: 15px;
-      transition: border-color 0.2s;
-    }
-    .form-group input:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: var(--orange);
-    }
-    .form-group textarea { resize: vertical; min-height: 80px; }
-    .form-submit {
+      border: 1.5px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      color: var(--ink);
       width: 100%;
-      padding: 14px;
-      margin-top: 8px;
     }
+    input:focus, textarea:focus { border-color: var(--blue); outline: none; }
+    input:focus-visible, textarea:focus-visible { outline: 3px solid rgba(43,95,163,0.3); outline-offset: 1px; }
+    textarea { min-height: 100px; resize: vertical; }
+    .form-note { font-size: 0.8125rem; color: var(--muted); }
     .form-success {
       display: none;
-      text-align: center;
-      padding: 40px 20px;
+      border: 1px solid var(--line);
+      background: var(--gray);
+      border-radius: var(--radius-lg);
+      padding: 26px;
     }
-    .form-success h3 {
-      font-size: 24px;
-      color: var(--navy);
-      margin-bottom: 12px;
-    }
-    .form-success p {
-      color: #555;
-      font-size: 15px;
-    }
+    .form-success h3 { margin-bottom: 0.4rem; }
 
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 36px; }
-      .hero-desc { font-size: 16px; }
-      .three-cols { grid-template-columns: 1fr; gap: 24px; }
-      .who-grid { grid-template-columns: 1fr; }
-      .who-cell { aspect-ratio: auto; }
-      .who-cell-text { padding: 40px 24px; }
-      .bio-content { flex-direction: column; align-items: center; text-align: center; }
-      h2 { font-size: 32px !important; }
-      .cta-btn { font-size: 14px; padding: 14px 28px; }
+    /* footer */
+    footer {
+      background: var(--blue-deep);
+      color: rgba(255,255,255,0.75);
+      padding: 36px 0;
+      font-size: 0.875rem;
     }
+    .foot { display: flex; flex-wrap: wrap; gap: 14px 32px; justify-content: space-between; align-items: center; }
+    footer a { color: rgba(255,255,255,0.85); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.3); }
+    footer a:hover { color: #fff; }
+    .foot-links { display: flex; gap: 22px; align-items: center; }
+    .disclaimer { width: 100%; font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-top: 6px; }
+
+    /* reveal */
+    .reveal { opacity: 0; transform: translateY(12px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
   </style>
 </head>
 <body>
 
-  <!-- HEADER (logo only, no CTA — matching original) -->
-  <header class="site-header">
-    <div class="container">
-      <a href="#" class="logo-text"><span class="first-name">Jonathan</span>Yuval</a>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#top">
+        <img src="https://lead-it.biz/wp-content/uploads/2026/02/cropped-Lead-It-Trasfpartnet.png" alt="Lead-IT logo">
+        <span class="brand-text">Sales Simplified<small>by Jonathan Yuval</small></span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#about">About Jonathan</a>
+        <a href="#program">The Program</a>
+        <a href="#stories">Success Stories</a>
+        <a class="btn btn-solid nav-cta" href="#contact">Book a Free Consultation</a>
+      </nav>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
     </div>
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+      <a href="#about">About Jonathan</a>
+      <a href="#program">The Program</a>
+      <a href="#stories">Success Stories</a>
+      <a class="btn btn-solid" href="#contact">Book a Free Consultation</a>
+    </nav>
   </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <video class="hero-video" autoplay muted loop playsinline poster="images/video-poster.jpg">
-      <source src="images/hero-video.mp4" type="video/mp4">
-    </video>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1 style="font-size:51px">Achieve Your Business Goals</h1>
-      <p class="hero-desc">An online course to help entrepreneurs and young companies owners unlock their sales and business potential in the right way.</p>
-      <a href="#" class="cta-btn" onclick="openModal(); return false;">Book Your FREE Consultation Now</a>
-    </div>
-  </section>
+  <main id="top">
 
-  <!-- JONATHAN'S VISION VIDEO -->
-  <section style="background:var(--white);padding:60px 0;">
-    <div class="container" style="text-align:center;">
-      <h2 style="font-size:52px;margin-bottom:24px;"><span style="color:var(--navy);">Jonathan's </span><span style="color:var(--orange);font-style:italic;">Vision</span></h2>
-      <div id="vision-player" style="width:100%;max-width:576px;margin:0 auto;aspect-ratio:16/9;border-radius:8px;overflow:hidden;position:relative;cursor:pointer;background:#000;" onclick="playVisionVideo()">
-        <img id="vision-cover" src="images/vision-cover.png" alt="Play video" style="width:100%;height:100%;object-fit:cover;">
-        <div id="vision-play-btn" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
-          <div style="width:68px;height:68px;background:rgba(255,255,255,0.85);border-radius:50%;display:flex;align-items:center;justify-content:center;">
-            <div style="width:0;height:0;border-top:14px solid transparent;border-bottom:14px solid transparent;border-left:24px solid #333;margin-left:4px;"></div>
+    <!-- Hero: who + what, one idea -->
+    <section class="hero" aria-label="Introduction">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">An online program with expert support</p>
+          <h1>Sales, <em>simplified</em> — for entrepreneurs and young companies.</h1>
+          <p class="lede muted">A strong product is not enough. Jonathan Yuval — 25+ years in international sales — helps founders define the right market, build a practical sales plan, and take their first sales steps the right way.</p>
+          <div class="hero-actions">
+            <a class="btn btn-solid" href="#contact">Book a Free Consultation</a>
+            <a class="btn btn-ghost" href="#about">Meet Jonathan</a>
           </div>
         </div>
-        <video id="vision-video" playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:none;">
-          <source src="images/jonathans-vision.mp4" type="video/mp4">
-        </video>
+        <figure class="hero-photo">
+          <img src="assets/yoni-help1.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='file:///Z:/01 Shared Customers/@@@Yoni Yuval/Yoni Help1.jpg'}" alt="Jonathan Yuval coaching a founder at her screen" loading="eager">
+        </figure>
       </div>
-      <div style="margin-top:28px;">
-        <a href="#" class="cta-btn" onclick="openModal(); return false;">Book Your FREE Consultation Now</a>
+    </section>
+
+    <!-- Moving banner: sectors + companies from testimonials -->
+    <div class="strip" aria-label="Sectors and companies Jonathan has worked with">
+      <p class="strip-label">25+ years serving companies across sectors</p>
+      <div class="marquee">
+        <div class="marquee-track" id="marqueeTrack">
+          <span class="mark">AiSight</span>
+          <span class="mark">COMMUNi</span>
+          <span class="mark">IoT Cybersecurity</span>
+          <span class="mark">Financial Services</span>
+          <span class="mark">Industry 4.0</span>
+          <span class="mark">Advanced Electronics</span>
+          <span class="mark">Retail &amp; Consumer</span>
+          <span class="mark">Software &amp; Storage</span>
+          <span class="mark">Clean-tech</span>
+          <span class="mark">Medical Devices</span>
+        </div>
       </div>
     </div>
-  </section>
 
-  <!-- JOIN THE WINNING SIDE -->
-  <section class="vision">
-    <div class="vision-bg"></div>
-    <div class="container">
-      <h2>Join The Winning Side</h2>
-      <ul class="vision-list">
-        <li><span class="check">&#10003;</span> Identify right target market</li>
-        <li><span class="check">&#10003;</span> Build a strong professional network</li>
-        <li><span class="check">&#10003;</span> Find the product-market fit</li>
-        <li><span class="check">&#10003;</span> Deal with competition</li>
-        <li><span class="check">&#10003;</span> Build sales strategy &amp; sales plan</li>
-        <li><span class="check">&#10003;</span> Scale sales</li>
-        <li><span class="check">&#10003;</span> Build a successful sales team</li>
-        <li><span class="check">&#10003;</span> Measure your business success</li>
-        <li><span class="check">&#10003;</span> Generate leads</li>
-        <li><span class="check">&#10003;</span> Adapt to market changes</li>
-        <li><span class="check">&#10003;</span> Build customer relationship</li>
-        <li class="more-item"><span class="check">&#10003;</span> And many more.</li>
-      </ul>
-      <div class="vision-cta">
-        <a href="#" class="cta-btn" onclick="openModal(); return false;">Book Your FREE Consultation Now</a>
+    <!-- Who is the man / why listen / what did he do -->
+    <section id="about" aria-labelledby="about-h">
+      <div class="wrap split">
+        <figure class="portrait">
+          <img src="assets/yoni-portrait.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='file:///Z:/01 Shared Customers/@@@Yoni Yuval/Yoni Passport.jpg'}" alt="Jonathan Yuval">
+        </figure>
+        <div>
+          <p class="eyebrow">Who is Jonathan Yuval?</p>
+          <h2 id="about-h">A former CEO who has spent 25+ years opening markets and closing deals.</h2>
+          <ul class="facts">
+            <li><span>Jonathan Yuval (MBA) — <strong>former CEO</strong>, international business development and sales executive.</span></li>
+            <li><span>Founder of <strong>Lead-IT</strong> (2004): helping companies penetrate target markets, secure pilot orders, build channel networks, and close first deals.</span></li>
+            <li><span>Has introduced clients to <strong>private investors and VC firms</strong>, contributing directly to company valuations.</span></li>
+            <li><span>Packaged that field experience into <strong>Sales Simplified</strong> — an online program with personal support for founders.</span></li>
+          </ul>
+          <a class="link-in" href="https://www.linkedin.com/in/jonathan-yuval/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+            Verify on LinkedIn
+          </a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- HOW IT WORKS -->
-  <section class="how-it-works">
-    <div class="container">
-      <h2>How It Works</h2>
-      <div class="three-cols">
-        <div class="col-card">
-          <div class="col-icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 2v10h16V6H4zm-1 14h18v2H3v-2zm7-8l4 2-4 2V12z"/></svg>
+    <!-- The program: what you get, in one screen -->
+    <section id="program" class="alt" aria-labelledby="program-h">
+      <div class="wrap">
+        <p class="eyebrow">The program</p>
+        <h2 id="program-h" style="max-width:18em">One practical program. Three things working together.</h2>
+        <div class="cols3">
+          <div class="card">
+            <h3>Online program</h3>
+            <p>Watch the videos and follow expert advice from anywhere, at any time.</p>
           </div>
-          <h3>Online Program</h3>
-          <p>Watch the videos and follow the expert advice from anywhere in the world at any time to achieve your business goals.</p>
-        </div>
-        <div class="col-card">
-          <div class="col-icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm0 2v16h12V4H6zm2 3h8v2H8V7zm0 4h8v2H8v-2zm0 4h5v2H8v-2z"/></svg>
+          <div class="card">
+            <h3>Proven plan</h3>
+            <p>Practical, actionable strategies to expand and grow into new markets.</p>
           </div>
-          <h3>Proven Plan</h3>
-          <p>Success is not a stroke of luck. Follow proven and actionable strategies to expand and grow your business into new markets.</p>
-        </div>
-        <div class="col-card">
-          <div class="col-icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16.5 3A5.49 5.49 0 0 0 12 5.34 5.49 5.49 0 0 0 7.5 3 5.5 5.5 0 0 0 2 8.5c0 5.25 6.5 10.5 10 12.5 3.5-2 10-7.25 10-12.5A5.5 5.5 0 0 0 16.5 3zm-4.4 15.55C9.44 16.4 4 12 4 8.5a3.5 3.5 0 0 1 7 0h2a3.5 3.5 0 0 1 7 0c0 3.5-5.44 7.9-8.1 10.05z"/></svg>
+          <div class="card">
+            <h3>Expert support</h3>
+            <p>Jonathan personally answers questions and supports you when needed.</p>
           </div>
-          <h3>Expert Support</h3>
-          <p>Your mentor will be available to answer your questions and provide you with any support that you may need.</p>
+        </div>
+        <div class="chips" aria-label="Topics covered">
+          <span class="chip">Target market</span>
+          <span class="chip">Product-market fit</span>
+          <span class="chip">Sales strategy &amp; plan</span>
+          <span class="chip">Lead generation</span>
+          <span class="chip">Scaling sales</span>
+          <span class="chip">Building a sales team</span>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- WHO IS IT FOR / WHY DOES IT EXIST -->
-  <section class="who-section">
-    <div class="container">
-      <div class="who-grid">
-        <div class="who-cell">
-          <img src="images/portrait1.jpg" alt="Jonathan Yuval">
-        </div>
-        <div class="who-cell who-cell-text">
-          <h2>Who Is It For</h2>
-          <p>My program is created exclusively for entrepreneurs, and young companies owners who are taking their first steps in executing their sales strategy. This is one of the most important and dangerous tipping point in a young company life, diligently executing the right steps is crucial for the company survival and growth.</p>
-        </div>
-        <div class="who-cell who-cell-text">
-          <h2>Why Does It Exist</h2>
-          <p>Because many entrepreneurs come from technology side. And in order to make the company successful, they need to unlock the sales and business potential in the right way.</p>
-        </div>
-        <div class="who-cell">
-          <img src="images/portrait2.jpg" alt="Jonathan Yuval">
-        </div>
-      </div>
-      <div class="who-cta">
-        <a href="#" class="cta-btn" onclick="openModal(); return false;">Book Your FREE Consultation Now</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIAL 1 — off-white background -->
-  <section class="testimonial-section bg-offwhite">
-    <div class="container">
-      <h2>What People Say</h2>
-      <div class="testimonial-content">
-        <p class="quote">"I recently had the privilege of participating in a sales course led by Jonathan (Yoni) Yuval, and I cannot recommend it highly enough. As a founder who successfully exited my startup, I understand the critical importance of effective sales strategies at every stage of a company's journey. Yoni's course is filled with valuable insights, practical advice, and actionable strategies that are directly applicable to any startups with a sweet-spot on pre-seed to Series B. Yoni's passion for sales and depth of experience shine through in every session. He possesses a rare ability to connect with founders and tailor his teachings to address the unique challenges they face in the sales domain. His approach is not just theoretical; it's grounded in real-world successes and lessons combined with many very practical examples from his own extensive and successful career. I can highly recommend Yonis course to any founder looking to unlock the sales potential within their company, It's not just about learning sales techniques; it's about adopting a sales mindset that can transform your approach to business development, customer relations, and revenue growth. Participating in this course has opened my eyes to new possibilities and has equipped me with the tools and confidence to take my next startup's sales efforts to the next level. In conclusion, if you're anywhere in your founding journey, from ideating your first startup to steering your company through the challenges of scaling, Yoni's sales course is highly recommended. Let's stay in touch :)"</p>
-        <div class="author">- Maximilian von Duering<br>Founder of AiSight | Forbes 30 under 30 | Angel Investor | CDL Mentor</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIAL 2 — orange background -->
-  <section class="testimonial-section bg-orange">
-    <div class="container">
-      <div class="testimonial-content">
-        <p class="quote">"Recommendation for Jonathan Yuval's Online Course "Sales Simplified" I am pleased to provide a glowing recommendation for Jonathan Yuval's online course, "Sales Simplified," based on my firsthand experience working with him. As the CEO of a startup company during its early stages, I had the privilege of collaborating with Jonathan, who played a pivotal role in helping us build the infrastructure necessary for our growth. Jonathan's expertise and guidance were invaluable as we navigated the complexities of scaling our sales operations. His online course, "Sales Simplified," is a testament to his deep understanding of sales principles and his ability to distill complex concepts into easily understandable lessons. The course offers practical strategies and techniques that are applicable across various industries, making it a valuable resource for anyone looking to enhance their sales skills. Moreover, what sets Jonathan apart is his commitment to providing personalized support and guidance. In addition to the online course, he offers advanced one-on-one support, ensuring that each participant receives tailored advice and mentorship based on their unique challenges and goals. This personalized approach not only accelerates learning but also fosters a supportive environment for growth and development. I am deeply grateful to Jonathan for his contributions to our company's success, and I wholeheartedly recommend his online course, "Sales Simplified," to anyone seeking to elevate their sales capabilities. Whether you're a seasoned sales professional or a newcomer to the field, Jonathan's insights will undoubtedly help you achieve your sales objectives and propel your business forward."</p>
-        <div class="author">- Ben Grinberg<br>Founder and CEO of COMMUNi</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- DON'T WASTE TIME EXPERIMENTING -->
-  <section class="dont-waste">
-    <div class="container">
-      <h2>Don't Waste Time Experimenting</h2>
-      <a href="#" class="cta-btn" onclick="openModal(); return false;">Book Your FREE Consultation Now</a>
-    </div>
-  </section>
-
-  <!-- BIO / LEADING EXPERTISE -->
-  <section class="bio-section">
-    <div class="container">
-      <h2>Leading Expertise At Your Fingertips</h2>
-      <div class="bio-content">
-        <div class="bio-avatar">
-          <img src="images/portrait2.jpg" alt="Jonathan Yuval">
-        </div>
-        <div class="bio-text">
-          <h3>Jonathan Yuval</h3>
-          <p>My name is Jonathan, a professional international C-level manager, founder of Lead-IT. a business management service for companies looking to expand and grow their business into new markets. During my 25+ years in business, i had the privilege to help many companies, small and big to achieve their business goals, sales and profit targets, grow a healthy and profitable businesses and reach into new international markets.</p>
-          <p>From my experience, I know exactly what entrepreneurs and young business owners challenges are, in executing their dreams and strategies. As a result 97% of new companies fail.</p>
-          <p>I have combined and packaged my extensive field experience to a simple to use and practical program to help young companies in their first steps towards success. In this program you will be able to learn the right steps to materialize your business strategy, define your market fit and competitive advantage and build a sustainable sales machine for ever growing organization.</p>
-          <a href="success-stories.pdf" target="_blank" class="more-stories">More Success Stories &rarr;</a>
+    <!-- Who he helped + results -->
+    <section id="stories" aria-labelledby="stories-h">
+      <div class="wrap">
+        <p class="eyebrow">Success stories</p>
+        <h2 id="stories-h" style="max-width:16em">Founders he has helped — and what changed for them.</h2>
+        <div class="stories">
+          <article class="story">
+            <blockquote>Participating in this course has opened my eyes to new possibilities and equipped me with the tools and confidence to take my next startup's sales efforts to the next level.</blockquote>
+            <p class="attrib">Maximilian von Duering
+              <small>Founder of AiSight (exited) · Forbes 30 under 30 · Angel Investor</small>
+            </p>
+          </article>
+          <article class="story">
+            <blockquote>Jonathan played a pivotal role in helping us build the infrastructure necessary for our growth. His personalized support accelerates learning based on your unique challenges and goals.</blockquote>
+            <p class="attrib">Ben Grinberg
+              <small>Founder and CEO of COMMUNi</small>
+            </p>
+          </article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CONTACT JONATHAN -->
-  <section class="contact-section">
-    <div class="container">
-      <h2>Contact Jonathan</h2>
-      <p>Would you like to unlock your business potential in the right way? This is for you!</p>
-      <a href="#" class="cta-btn" onclick="openModal(); return false;">Book Your FREE Consultation Now</a>
-    </div>
-  </section>
+    <!-- CTA + contact -->
+    <section id="contact" class="alt" aria-labelledby="contact-h">
+      <div class="wrap contact-grid">
+        <div>
+          <p class="eyebrow">Get started</p>
+          <h2 id="contact-h">Don't waste time experimenting with random sales activity.</h2>
+          <p class="muted" style="margin-top:1.2rem">The consultation is free — Jonathan will be in touch within 24 hours.</p>
+        </div>
+        <div>
+          <form id="contactForm" novalidate>
+            <div class="field">
+              <label for="f-name">Full name</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="f-email">Email address</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="f-phone">Phone number</label>
+              <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+            </div>
+            <div>
+              <button class="btn btn-solid" type="submit">Book a Free Consultation</button>
+            </div>
+            <p class="form-note">No purchase or payment of any kind is necessary for your free consultation.</p>
+          </form>
+          <div class="form-success" id="formSuccess" role="status">
+            <h3>Thank you!</h3>
+            <p class="muted">Your consultation request has been received. Jonathan will contact you within 24 hours.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="container">
-      <p>DISCLAIMER Results may vary | Results are based on individual circumstances</p>
-      <p>
-        <a href="#">Terms</a>
-        <a href="#">Privacy &amp; Cookie Policy</a>
-      </p>
-      <p style="margin-top: 4px;">Jonathan Yuval</p>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <span>© <span id="year"></span> Jonathan Yuval · Sales Simplified · Lead-IT Business Initiatives</span>
+      <span class="foot-links">
+        <a href="https://www.linkedin.com/in/jonathan-yuval/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://lead-it.biz/" target="_blank" rel="noopener">Lead-IT</a>
+        <a href="#top">Back to top</a>
+      </span>
+      <span class="disclaimer">DISCLAIMER: Results may vary. Results are based on individual circumstances.</span>
     </div>
   </footer>
 
-  <!-- MODAL -->
-  <div class="modal-overlay" id="consultModal">
-    <div class="modal">
-      <button class="modal-close" onclick="closeModal()">&times;</button>
-      <div id="formContent">
-        <h3>Free Consultation Form</h3>
-        <p class="modal-sub">Fill in your details and Jonathan will be in touch shortly.</p>
-        <form id="consultForm" onsubmit="submitForm(event)">
-          <div class="form-group">
-            <label for="name">Full Name</label>
-            <input type="text" id="name" name="name" required placeholder="Your name">
-          </div>
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" required placeholder="you@example.com">
-          </div>
-          <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" placeholder="+972 50 000 0000">
-          </div>
-          <div class="form-group">
-            <label for="message">Message (optional)</label>
-            <textarea id="message" name="message" placeholder="Tell us about your business and goals..."></textarea>
-          </div>
-          <button type="submit" class="cta-btn form-submit">Send Request</button>
-        </form>
-      </div>
-      <div class="form-success" id="formSuccess">
-        <h3>Thank You!</h3>
-        <p>Your consultation request has been received. Jonathan will contact you within 24 hours.</p>
-      </div>
-    </div>
-  </div>
-
   <script>
-    function playVisionVideo() {
-      document.getElementById('vision-cover').style.display = 'none';
-      document.getElementById('vision-play-btn').style.display = 'none';
-      var vid = document.getElementById('vision-video');
-      vid.style.display = 'block';
-      vid.controls = true;
-      vid.play();
-      document.getElementById('vision-player').style.cursor = 'default';
-      document.getElementById('vision-player').onclick = null;
-    }
-    function openModal() {
-      document.getElementById('consultModal').classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeModal() {
-      document.getElementById('consultModal').classList.remove('active');
-      document.body.style.overflow = '';
-    }
-    function submitForm(e) {
-      e.preventDefault();
-      document.getElementById('formContent').style.display = 'none';
-      document.getElementById('formSuccess').style.display = 'block';
-      setTimeout(function() {
-        closeModal();
-        document.getElementById('formContent').style.display = 'block';
-        document.getElementById('formSuccess').style.display = 'none';
-        document.getElementById('consultForm').reset();
-      }, 3000);
-    }
-    document.getElementById('consultModal').addEventListener('click', function(e) {
-      if (e.target === this) closeModal();
+    // Mobile menu
+    var menuBtn = document.getElementById('menuBtn');
+    var mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', function () {
+      var open = mobileMenu.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open);
+      menuBtn.textContent = open ? 'Close' : 'Menu';
     });
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeModal();
+    mobileMenu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        mobileMenu.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.textContent = 'Menu';
+      });
     });
-  </script>
 
+    // Marquee: duplicate content for seamless loop
+    var track = document.getElementById('marqueeTrack');
+    track.innerHTML += track.innerHTML;
+
+    // Contact form (local build — no backend yet)
+    var form = document.getElementById('contactForm');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      form.style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    });
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Subtle reveal
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduce && 'IntersectionObserver' in window) {
+      var targets = document.querySelectorAll('section .wrap > *');
+      targets.forEach(function (t) { t.classList.add('reveal'); });
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+        });
+      }, { threshold: 0.12 });
+      targets.forEach(function (t) { io.observe(t); });
+    }
+  </script>
 </body>
 </html>
