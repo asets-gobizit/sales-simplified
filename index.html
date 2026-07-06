@@ -205,22 +205,53 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: 14px;
       min-height: 46px;
       padding-block: 9px;
       padding-right: calc(var(--gutter) + 42px);
       text-align: center;
+      flex-wrap: wrap;
     }
-    .consultation-banner a {
+    .consultation-text {
+      display: inline;
+    }
+    .consultation-banner a:not(.consultation-cta) {
       color: #fff;
       text-decoration: none;
     }
-    .consultation-banner a:hover,
-    .consultation-banner a:focus-visible {
+    .consultation-banner a:not(.consultation-cta):hover,
+    .consultation-banner a:not(.consultation-cta):focus-visible {
       text-decoration: underline;
       text-underline-offset: 3px;
     }
     .consultation-banner strong {
       font-weight: 700;
+    }
+    .consultation-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 34px;
+      padding: 8px 20px;
+      border: 2px solid rgba(255,255,255,0.25);
+      border-radius: 999px;
+      background: #5bd05f;
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 0 0 0 rgba(91,208,95,0.48), inset 0 -2px 0 rgba(0,0,0,0.18);
+      animation: consultationGlow 3.2s ease-in-out infinite;
+      white-space: nowrap;
+    }
+    .consultation-cta:hover,
+    .consultation-cta:focus-visible {
+      background: #63dc68;
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+    @keyframes consultationGlow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(91,208,95,0.30), 0 0 8px rgba(91,208,95,0.28), inset 0 -2px 0 rgba(0,0,0,0.18); }
+      50% { box-shadow: 0 0 0 7px rgba(91,208,95,0.15), 0 0 18px rgba(91,208,95,0.55), inset 0 -2px 0 rgba(0,0,0,0.18); }
     }
     .consultation-close {
       position: absolute;
@@ -294,6 +325,9 @@
         justify-content: flex-start;
         text-align: left;
         padding-block: 10px;
+      }
+      .consultation-cta {
+        width: fit-content;
       }
     }
 
@@ -544,7 +578,8 @@
   <header>
     <div class="consultation-banner" id="consultationBanner">
       <div class="wrap consultation-banner-inner">
-        <a href="#contact"><strong>FREE CONSULTATION:</strong> Discover what’s holding your business back and get clear next steps to grow. Book your free session.</a>
+        <span class="consultation-text"><strong>FREE CONSULTATION:</strong> Discover what’s holding your business back and get clear next steps to grow.</span>
+        <a class="consultation-cta" href="#contact">Book your free session →</a>
         <button class="consultation-close" id="consultationClose" type="button" aria-label="Close consultation banner">&times;</button>
       </div>
     </div>
