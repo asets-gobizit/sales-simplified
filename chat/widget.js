@@ -167,6 +167,7 @@
   });
   card.querySelectorAll(".ym-pill").forEach(function (p) {
     p.addEventListener("click", function () {
+      card.classList.add("ym-response-focus");
       addMsg(p.dataset.q, "user");
       answer(p.dataset.q);
     });
