@@ -1,4 +1,4 @@
-/* Yoni chat widget — v1 (scripted brain, idle video, avatar-clip ready).
+/* Yoni chat widget - v1 (scripted brain, idle video, avatar-clip ready).
    Embed with: <script src="chat/faq.js" defer></script><script src="chat/widget.js" defer></script> */
 (function () {
   "use strict";
@@ -14,7 +14,7 @@
   link.href = "chat/widget.css";
   document.head.appendChild(link);
 
-  // ── markup ──
+  // markup
   var bubble = document.createElement("button");
   bubble.className = "ym-bubble";
   bubble.type = "button";
@@ -33,7 +33,6 @@
         '<source src="' + IDLE_VIDEO + '" type="video/mp4">' +
         '<source src="' + IDLE_FALLBACK + '" type="video/mp4">' +
       "</video>" +
-      '<span class="ym-name">Yoni · Sales Simplified</span>' +
       '<button class="ym-close" type="button" aria-label="Close chat">&#10005;</button>' +
     "</div>" +
     '<div class="ym-body" id="ymBody" aria-live="polite"></div>' +
@@ -59,7 +58,7 @@
   var leadMode = false;
   var greeted = false;
 
-  // ── helpers ──
+  // helpers
   function addMsg(text, who) {
     var div = document.createElement("div");
     div.className = "ym-msg " + (who === "user" ? "ym-user" : "ym-bot");
@@ -90,7 +89,7 @@
         video.onended = null;
       };
     };
-    // if clip missing (404), do nothing — idle keeps looping
+    // if clip missing (404), do nothing - idle keeps looping
   }
 
   function answer(q) {
@@ -120,7 +119,7 @@
 
   function captureLead(email) {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      addMsg("That doesn't look like an email — try again?", "bot");
+      addMsg("That doesn't look like an email - try again?", "bot");
       return;
     }
     leadMode = false;
@@ -135,7 +134,7 @@
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({ email: email, transcript: transcript, _subject: "New lead from Yoni chat widget" })
-      }).catch(function () { /* silent — transcript still visible in chat */ });
+      }).catch(function () { /* silent - transcript still visible in chat */ });
     }
   }
 
@@ -148,7 +147,7 @@
     else answer(q);
   }
 
-  // ── events ──
+  // events
   bubble.addEventListener("click", function () {
     card.classList.add("ym-open");
     bubble.style.display = "none";
@@ -156,7 +155,7 @@
     if (!greeted) {
       greeted = true;
       setTimeout(function () {
-        addMsg("Hi, I'm Yoni's assistant. Ask me anything about the Sales Simplified program — or tap a button below.", "bot");
+        addMsg("Hi, I'm Jonathan. Ask me anything about the Sales Simplified program - or tap a button below.", "bot");
       }, 350);
     }
     input.focus();
