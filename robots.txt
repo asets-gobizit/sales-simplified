@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://asets-gobizit.github.io/web-sales-simplified/sitemap.xml
