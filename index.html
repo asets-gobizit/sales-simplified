@@ -192,6 +192,61 @@
     .nav-links { display: none; }
     .nav-cta { display: none; }
 
+    .consultation-banner {
+      background: var(--blue);
+      color: #fff;
+      font-family: var(--display);
+      font-size: 0.9rem;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+    .consultation-banner-inner {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding-block: 9px;
+      padding-right: calc(var(--gutter) + 42px);
+      text-align: center;
+    }
+    .consultation-banner a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .consultation-banner a:hover,
+    .consultation-banner a:focus-visible {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .consultation-banner strong {
+      font-weight: 700;
+    }
+    .consultation-close {
+      position: absolute;
+      right: var(--gutter);
+      top: 50%;
+      transform: translateY(-50%);
+      display: inline-grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      border: 1px solid rgba(255,255,255,0.55);
+      border-radius: 50%;
+      background: rgba(255,255,255,0.16);
+      color: #fff;
+      font-size: 1.2rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+    .consultation-close:hover,
+    .consultation-close:focus-visible {
+      background: rgba(255,255,255,0.28);
+    }
+    body:not(.consultation-banner-open) .consultation-banner {
+      display: none;
+    }
+
     .menu-btn {
       background: none;
       border: 1.5px solid var(--line);
@@ -230,8 +285,16 @@
       }
       .nav-links a:hover { color: var(--blue); }
       .nav-cta { display: inline-block; padding: 11px 22px; font-size: 0.875rem; }
+      body.consultation-banner-open .nav-cta { display: none; }
       .nav-links a.nav-cta { color: #fff; }
       .nav-links a.nav-cta:hover { color: #fff; background: var(--blue-deep); }
+    }
+    @media (max-width: 640px) {
+      .consultation-banner-inner {
+        justify-content: flex-start;
+        text-align: left;
+        padding-block: 10px;
+      }
     }
 
     /* ── Hero ───────────────────────────────────────────── */
@@ -476,9 +539,15 @@
     @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
   </style>
 </head>
-<body>
+<body class="consultation-banner-open">
 
   <header>
+    <div class="consultation-banner" id="consultationBanner">
+      <div class="wrap consultation-banner-inner">
+        <a href="#contact"><strong>FREE CONSULTATION:</strong> Discover what’s holding your business back and get clear next steps to grow. Book your free session.</a>
+        <button class="consultation-close" id="consultationClose" type="button" aria-label="Close consultation banner">&times;</button>
+      </div>
+    </div>
     <div class="wrap nav">
       <a class="brand" href="#top" title="Simplicity is the ultimate sophistication" aria-label="Sales Simplified - Simplicity is the ultimate sophistication">
         <img src="https://lead-it.biz/wp-content/uploads/2026/02/cropped-Lead-It-Trasfpartnet.png" alt="Lead-IT logo">
@@ -676,6 +745,14 @@
   </footer>
 
   <script>
+    // Consultation banner
+    var consultationClose = document.getElementById('consultationClose');
+    if (consultationClose) {
+      consultationClose.addEventListener('click', function () {
+        document.body.classList.remove('consultation-banner-open');
+      });
+    }
+
     // Mobile menu
     var menuBtn = document.getElementById('menuBtn');
     var mobileMenu = document.getElementById('mobileMenu');
