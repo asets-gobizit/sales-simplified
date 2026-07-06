@@ -70,12 +70,21 @@
 .ym-card.ym-open { display: flex; }
 
 /* video area */
-.ym-video-wrap { position: relative; flex: none; height: 42%; background: #000; }
+.ym-video-wrap {
+  --ym-video-lift: 30px;
+  position: relative;
+  flex: none;
+  height: 45%;
+  background: #000;
+  overflow: hidden;
+}
 .ym-video-wrap video, .ym-video-wrap img.ym-poster {
-  width: 100%; height: 100%;
+  width: 100%;
+  height: calc(100% + var(--ym-video-lift));
   object-fit: cover;
   object-position: top center;
   display: block;
+  transform: translateY(calc(-1 * var(--ym-video-lift)));
 }
 .ym-name {
   position: absolute;
@@ -110,6 +119,14 @@
   flex-direction: column;
   gap: 8px;
   scrollbar-width: thin;
+  transition: margin-top 0.18s ease, padding-top 0.18s ease, background 0.18s ease;
+}
+.ym-card.ym-response-focus:hover .ym-body {
+  margin-top: -70px;
+  padding-top: 12px;
+  background: linear-gradient(180deg, rgba(11,17,20,0.94), var(--ym-bg) 68%);
+  border-top: 1px solid var(--ym-line);
+  z-index: 2;
 }
 .ym-msg {
   max-width: 88%;
